@@ -1,38 +1,316 @@
+body {
+  background: linear-gradient(120deg, #f4f6fa 60%, #e0e7ff 100%);
+  font-family: 'Segoe UI', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
 .App {
+  max-width: 520px;
+  margin: 3rem auto;
+  background: rgba(255,255,255,0.98);
+  border-radius: 18px;
+  box-shadow: 0 8px 32px rgba(99,102,241,0.10);
+  padding: 2.2rem 1.7rem 2.7rem 1.7rem;
+  position: relative;
+}
+
+h1, h2 {
   text-align: center;
+  font-weight: 800;
+  letter-spacing: 1px;
+  margin-top: 0;
+}
+h1 {
+  font-size: 2.3rem;
+  margin-bottom: 2.2rem;
+  background: linear-gradient(90deg, #6366f1 60%, #818cf8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  color: #6366f1;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.section-card {
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 2px 16px rgba(99,102,241,0.08);
+  padding: 2rem 1.5rem;
+  margin: 2rem auto 2.5rem auto;
+  max-width: 600px;
+  position: relative;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.about-page {
+  min-height: 60vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: flex-start;
+  padding: 2.5rem 0.5rem 2rem 0.5rem;
+  background: linear-gradient(120deg, #e0e7ff 60%, #f4f6fa 100%);
+  border-radius: 18px;
+  box-shadow: 0 8px 32px rgba(99,102,241,0.10);
+  margin: 2.5rem auto 2rem auto;
+  max-width: 600px;
 }
 
-.App-link {
-  color: #61dafb;
+.about-page h2 {
+  font-size: 2rem;
+  margin-bottom: 1.2rem;
+  color: #6366f1;
+  font-weight: 800;
+  letter-spacing: 1px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.about-page p, .about-page ul {
+  font-size: 1.13rem;
+  color: #333;
+  margin-bottom: 1.1rem;
+  line-height: 1.7;
+  text-align: center;
+}
+
+.about-page ul {
+  list-style: disc inside;
+  padding-left: 0;
+  margin-bottom: 1.2rem;
+}
+
+.about-page b {
+  color: #6366f1;
+}
+
+.about-page {
+  animation: fadeIn 0.7s;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  margin-bottom: 2rem;
+}
+
+input[type="text"],
+input[type="date"],
+textarea {
+  padding: 0.7rem;
+  border: 1.5px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 1rem;
+  background: #f9fafb;
+  transition: border 0.2s, box-shadow 0.2s;
+  box-shadow: 0 1px 4px rgba(99,102,241,0.04);
+}
+input[type="text"]:focus,
+input[type="date"]:focus,
+textarea:focus {
+  border: 1.5px solid #6366f1;
+  outline: none;
+  box-shadow: 0 2px 8px #6366f1aa;
+}
+
+button[type="submit"] {
+  background: linear-gradient(90deg, #6366f1 60%, #818cf8 100%);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 0.7rem;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 8px #6366f1aa;
+}
+button[type="submit"]:hover {
+  background: linear-gradient(90deg, #4f46e5 60%, #6366f1 100%);
+}
+
+.tasks-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.task-card {
+  background: #f9fafb;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+  padding: 1rem 1rem 0.7rem 1rem;
+  margin-bottom: 1.1rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.8rem;
+  position: relative;
+  transition: box-shadow 0.2s;
+}
+.task-card.completed {
+  background: #e0ffe0;
+  opacity: 0.7;
+  text-decoration: line-through;
+}
+
+.task-info {
+  flex: 1;
+}
+
+.task-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.2rem;
+}
+
+.task-desc {
+  font-size: 0.98rem;
+  color: #555;
+  margin-bottom: 0.3rem;
+}
+
+.task-date {
+  font-size: 0.92rem;
+  color: #888;
+}
+
+.task-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  align-items: flex-end;
+}
+
+.delete-btn {
+  background: #fee2e2;
+  color: #b91c1c;
+  border: none;
+  border-radius: 4px;
+  padding: 0.3rem 0.7rem;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.delete-btn:hover {
+  background: #fecaca;
+}
+
+.checkbox {
+  accent-color: #6366f1;
+  width: 1.2rem;
+  height: 1.2rem;
+  margin-top: 0.2rem;
+}
+
+.empty-state {
+  text-align: center;
+  color: #aaa;
+  margin-top: 2rem;
+  font-size: 1.1rem;
+}
+
+.navbar {
+  width: 100vw;
+  background: linear-gradient(90deg, #6366f1 60%, #818cf8 100%);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.7rem 2rem;
+  box-sizing: border-box;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.navbar-logo {
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-shadow: 0 2px 8px #6366f1aa;
+}
+
+.navbar-links {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-links li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.08rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: color 0.2s, border-bottom 0.2s;
+  border-bottom: 2px solid transparent;
+  padding-bottom: 2px;
+}
+
+.navbar-links li a:hover {
+  color: #c7d2fe;
+  border-bottom: 2px solid #fff;
+}
+
+.error-msg {
+  color: #b91c1c;
+  background: #fee2e2;
+  border: 1px solid #fecaca;
+  border-radius: 6px;
+  padding: 0.5rem 1rem;
+  margin: 0.5rem 0 0.7rem 0;
+  font-size: 1rem;
+  text-align: center;
+  font-weight: 600;
+}
+
+.signout-btn {
+  background: #fff;
+  color: #6366f1;
+  border: 1.5px solid #6366f1;
+  border-radius: 6px;
+  padding: 0.3rem 0.9rem;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.signout-btn:hover {
+  background: #6366f1;
+  color: #fff;
+}
+
+@media (max-width: 600px) {
+  .App {
+    max-width: 98vw;
+    padding: 1rem 0.3rem 2rem 0.3rem;
   }
-  to {
-    transform: rotate(360deg);
+  form {
+    gap: 0.5rem;
+  }
+  .task-card {
+    padding: 0.7rem 0.5rem 0.5rem 0.5rem;
+  }
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0.7rem 0.7rem;
+  }
+  .navbar-links {
+    gap: 0.7rem;
+    font-size: 0.98rem;
+  }
+  .about-page {
+    padding: 1.2rem 0.2rem 1.2rem 0.2rem;
   }
 }
